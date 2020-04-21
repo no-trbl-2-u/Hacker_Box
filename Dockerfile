@@ -4,14 +4,21 @@
 FROM kalilinux/kali-rolling AS Machine
 USER root
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Copy Utils dir into Container
 WORKDIR /utils
 COPY ./Utils /utils
 
-# apt updates and install pen tools
+# Apt update
 RUN apt-get -y update && apt-get -y dist-upgrade && apt-get -y autoremove && apt-get clean
-RUN apt-get -y install curl gnupg nmap
-# RUN apt-get -y install curl gnupg nmap exploitdb man-db dirb nikto wpscan uniscan
+
+# Kali Tooling -- https://www.kali.org/news/major-metapackage-makeover/
+RUN apt-get -y install kali-tools-top10
+
+# Misc. Tooling
+RUN apt-get -y install curl gnupg
+# Extras: exploitdb man-db dirb nikto wpscan uniscan, kali-linux-everything
 
 # Install node/npm to run JS scripts
 RUN curl -sL https://deb.nodesource.com/setup_13.x  | bash -

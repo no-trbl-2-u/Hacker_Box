@@ -15,11 +15,6 @@ sudo chmod +x Start.sh
 **NOTE!**
 > In order to use this ./Start.sh script as a quick command from your terminal, add a `cd ~/Path/To/Repo` line at the top of the script to allow this `Start.sh` Script to work starting from anywhere.
 
-
-## List of installed tools
-* nmap
-* curl
-
 ## List of Utils scripts
 
 ## Future Plans
